@@ -1,0 +1,51 @@
+.ng2-ss {
+    display: inline-block;
+    &__main-input {
+        padding: 10px 5px;
+        border-radius: 4px;
+        width: 350px;
+        border: 1px solid lightgray;
+        &:focus {
+            outline: none;
+        }
+        &__active {
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+    }
+    &__options {
+        border-left: 1px solid lightgrey;
+        border-bottom: 1px solid lightgrey;
+        border-right: 1px solid lightgrey;
+        box-sizing: border-box;
+        // padding: 5px;
+        max-height: 350px;
+        &__search {
+            padding: 4px;
+            &__input {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 5px 4px;
+            }
+        }
+        &__holder {
+            overflow-y: auto;
+            max-height: 300px;
+            &__def-item {
+                cursor: pointer;
+                padding: 5px 0px 5px 5px;
+                background: lightgray;
+                &:hover {
+                    background: cyan;
+                }
+            }
+            &__item {
+                cursor: pointer;
+                padding: 5px 0px 5px 5px;
+                &:hover {
+                    background: cyan;
+                }
+            }
+        }
+    }
+}
