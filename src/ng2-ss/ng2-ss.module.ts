@@ -21,4 +21,4 @@ import { Ng2SsComponent } from './../ng2-ss/ng2-ss.component';
   ],
   providers: []
 })
-export class Ng2SelectSearchModule { }
+export class Ng2SearchSelectModule { }

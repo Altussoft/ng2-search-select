@@ -3,8 +3,34 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'search-select',
-  templateUrl: './ng2-ss.component.html',
-  styleUrls: ['./ng2-ss.component.less'],
+  // templateUrl: './ng2-ss.component.html',
+  template: `
+  <div class="ng2-ss">
+    <div name="ng2-ss-disp" id="ng2-ss-disp" class="ng2-ss__main-input" 
+    (click)="openOptions()" [ngClass]="{'ng2-ss__main-input__active': openSSOptions}">
+    {{ssDisplayValue}}
+  </div>
+    <div *ngIf="openSSOptions" class="ng2-ss__options">
+      <div class="ng2-ss__options__search">
+          <input type="text" name="ng2-ss-search" id="ng2-ss-search" 
+          class="ng2-ss__options__search__input" [(ngModel)]="ssSearchKey" />
+      </div>
+      <div class="ng2-ss__options__holder">
+        <div class="ng2-ss__options__holder__def-item" (click)="selectSSItem('default')">
+          Choose an option
+        </div>
+        <div *ngIf="!data" (click)="selectSSItem(item)" class="ng2-ss__options__holder__item">
+          Loading ...
+        </div>
+        <div *ngFor="let item of data | ng2Ss : ssSearchKey; let i = index;" (click)="selectSSItem(item)"
+        class="ng2-ss__options__holder__item">
+          {{item.label}}
+        </div>
+      </div>
+    </div>
+  </div>
+  `,
+  // styleUrls: ['./ng2-ss.component.less'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
