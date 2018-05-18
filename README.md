@@ -12,7 +12,7 @@
 
 ## Installation
 
-  npm i ng2-search-select
+  `npm i ng2-search-select`
 
 ## Usage
   Import the library into your project. 
@@ -54,6 +54,8 @@
   * `onClose` - a handler to notify when the dropdown is closed.
   * `onChange` - a handler to notify when a new slection is made and return the newly seleted item.
   
+  ## Demo
+    ![Alt Text](https://github.com/akbeeram/ng2-search-select/blob/master/demo.GIF)
   ## License
 
   [MIT](./LICENSE)

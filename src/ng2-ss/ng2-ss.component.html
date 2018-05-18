@@ -28,11 +28,11 @@
       <div *ngFor="let item of data; let i = index;">
         <div *ngIf="currTabIndex === i">
           <div *ngFor="let d of item.data | ng2Ss : ssSearchKey; let j = index;" (click)="selectSSItem(d, j, i)"
-          class="ng2-ss__options__holder__item">
+          class="ng2-ss__options__holder__item" [ngClass]="{'ng2-ss__options__holder__item__active': ssDisplayValue.label === d.label}">
           <div *ngIf="d === -1" style="text-align:center;">No matches found</div>
           <span title="{{d.label}}"  *ngIf="d !== -1">
-            <span *ngIf="defaultIndex === j && defaultTab === i">&#10004;</span>
-            <span *ngIf="defaultIndex !== j || defaultTab !== i">&nbsp;&nbsp;&nbsp;</span>
+            <span *ngIf="ssDisplayValue.label === d.label">&#10004;</span>
+            <span *ngIf="ssDisplayValue.label !== d.label">&nbsp;&nbsp;&nbsp;</span>
             {{d.label}}
           </span>
         </div>

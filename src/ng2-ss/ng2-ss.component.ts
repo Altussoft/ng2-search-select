@@ -3,52 +3,52 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'search-select',
-  // templateUrl: './ng2-ss.component.html',
-  template: `
-  <div class="ng2-ss" [ngStyle]="{'width': width || '350px'}">
-    <div name="ng2-ss-disp" id="ng2-ss-disp" class="ng2-ss__main-input" 
-    (click)="openOptions()" [ngClass]="{'ng2-ss__main-input__active': openSSOptions}">
-      <span>{{ssDisplayValue?.label || 'Choose an option'}}</span>
-    </div>
-    <div class="ng2-ss__main-input__arrow" (click)="openOptions()">
-      <span *ngIf="!openSSOptions">&#9660;</span>
-      <span *ngIf="openSSOptions">&#9650;</span>
-    </div>
-    <div *ngIf="openSSOptions" class="ng2-ss__options">
-      <div class="ng2-ss__options__header">
-          Select an option
-          <span (click)="closeSerSel()">&#10006;</span>
-      </div>
-      <div class="ng2-ss__options__search">
-          <input type="text" name="ng2-ss-search" id="ng2-ss-search" #optionSearch
-          class="ng2-ss__options__search__input" [(ngModel)]="ssSearchKey" />
-          <div *ngIf="data.length > 1" class="ng2-ss__options__search__tabs__holder">
-            <div *ngFor="let item of data; let idx = index;" (click)="showTab(idx)" class="ng2-ss__options__search__tabs" [ngClass]="{'ng2-ss__options__search__tabs__active': currTabIndex === idx}">
-              <span title="{{item.title}}">{{item.title}}</span>
-            </div>
-          </div>
-      </div>
-      <div class="ng2-ss__options__holder">
-        <div *ngIf="!data || data?.length < 1" (click)="selectSSItem(item)" class="ng2-ss__options__holder__item">
-          <span>&nbsp;&nbsp;&nbsp;</span>Loading ...
-        </div>
-        <div *ngFor="let item of data; let i = index;">
-          <div *ngIf="currTabIndex === i">
-            <div *ngFor="let d of item.data | ng2Ss : ssSearchKey; let j = index;" (click)="selectSSItem(d, j, i)"
-            class="ng2-ss__options__holder__item">
-            <div *ngIf="d === -1" style="text-align:center;">No matches found</div>
-            <span title="{{d.label}}"  *ngIf="d !== -1">
-              <span *ngIf="defaultIndex === j && defaultTab === i">&#10004;</span>
-              <span *ngIf="defaultIndex !== j || defaultTab !== i">&nbsp;&nbsp;&nbsp;</span>
-              {{d.label}}
-            </span>
-          </div>
-        </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  `,
+  templateUrl: './ng2-ss.component.html',
+  // template: `
+  // <div class="ng2-ss" [ngStyle]="{'width': width || '350px'}">
+  //   <div name="ng2-ss-disp" id="ng2-ss-disp" class="ng2-ss__main-input" 
+  //   (click)="openOptions()" [ngClass]="{'ng2-ss__main-input__active': openSSOptions}">
+  //     <span>{{ssDisplayValue?.label || 'Choose an option'}}</span>
+  //   </div>
+  //   <div class="ng2-ss__main-input__arrow" (click)="openOptions()">
+  //     <span *ngIf="!openSSOptions">&#9660;</span>
+  //     <span *ngIf="openSSOptions">&#9650;</span>
+  //   </div>
+  //   <div *ngIf="openSSOptions" class="ng2-ss__options">
+  //     <div class="ng2-ss__options__header">
+  //         Select an option
+  //         <span (click)="closeSerSel()">&#10006;</span>
+  //     </div>
+  //     <div class="ng2-ss__options__search">
+  //         <input type="text" name="ng2-ss-search" id="ng2-ss-search" #optionSearch
+  //         class="ng2-ss__options__search__input" [(ngModel)]="ssSearchKey" />
+  //         <div *ngIf="data.length > 1" class="ng2-ss__options__search__tabs__holder">
+  //           <div *ngFor="let item of data; let idx = index;" (click)="showTab(idx)" class="ng2-ss__options__search__tabs" [ngClass]="{'ng2-ss__options__search__tabs__active': currTabIndex === idx}">
+  //             <span title="{{item.title}}">{{item.title}}</span>
+  //           </div>
+  //         </div>
+  //     </div>
+  //     <div class="ng2-ss__options__holder">
+  //       <div *ngIf="!data || data?.length < 1" (click)="selectSSItem(item)" class="ng2-ss__options__holder__item">
+  //         <span>&nbsp;&nbsp;&nbsp;</span>Loading ...
+  //       </div>
+  //       <div *ngFor="let item of data; let i = index;">
+  //         <div *ngIf="currTabIndex === i">
+  //           <div *ngFor="let d of item.data | ng2Ss : ssSearchKey; let j = index;" (click)="selectSSItem(d, j, i)"
+  //           class="ng2-ss__options__holder__item">
+  //           <div *ngIf="d === -1" style="text-align:center;">No matches found</div>
+  //           <span title="{{d.label}}"  *ngIf="d !== -1">
+  //             <span *ngIf="defaultIndex === j && defaultTab === i">&#10004;</span>
+  //             <span *ngIf="defaultIndex !== j || defaultTab !== i">&nbsp;&nbsp;&nbsp;</span>
+  //             {{d.label}}
+  //           </span>
+  //         </div>
+  //       </div>
+  //       </div>
+  //     </div>
+  //   </div>
+  // </div>
+  // `,
   // styleUrls: ['./ng2-ss.component.less'],
   providers: [
     {
@@ -64,7 +64,8 @@ export class Ng2SsComponent implements OnInit, ControlValueAccessor {
   public ssDisplayValue: any;
   public currTabIndex: number = 0;
   public currOptionIndex: number = 0;
-
+  public ssSearchKey: string;
+  
   @ViewChild('optionSearch') searchInput: ElementRef;
 
   @Input() width: any;
@@ -153,6 +154,7 @@ export class Ng2SsComponent implements OnInit, ControlValueAccessor {
     if(this.onChange.observers.length > 0) {
       this.onChange.emit(item);
     }
+    this.ssSearchKey = '';
     this.propagateChange(item);
     this.closeSerSel();
   }
