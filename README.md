@@ -55,7 +55,7 @@
   * `onChange` - a handler to notify when a new slection is made and return the newly seleted item.
   
   ## Demo
-    ![Alt Text](https://github.com/akbeeram/ng2-search-select/blob/master/demo.GIF)
+    ![Demo GIF]https://github.com/akbeeram/ng2-search-select/blob/master/demo.gif)
   ## License
 
   [MIT](./LICENSE)
