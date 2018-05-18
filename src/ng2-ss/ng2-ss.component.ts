@@ -101,7 +101,6 @@ export class Ng2SsComponent implements OnInit, ControlValueAccessor {
    * @param changes 
    */
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
     if(changes.defaultIndex && !changes.defaultIndex.firstChange) {
       this.ngOnInit();
     }
@@ -117,7 +116,9 @@ export class Ng2SsComponent implements OnInit, ControlValueAccessor {
   public openOptions() {
     this.openSSOptions = !this.openSSOptions;
     this.addListeners();
-    this.onOpen.emit();
+    if(this.onOpen.observers.length > 0) {
+      this.onOpen.emit();
+    }
     if(this.openSSOptions) {
       setTimeout(this.focusSearch, 800);
     }
@@ -129,7 +130,9 @@ export class Ng2SsComponent implements OnInit, ControlValueAccessor {
   public closeSerSel() {
     this.openSSOptions = false;
     this.removeListeners();
-    this.onClose.emit();
+    if(this.onClose.observers.length > 0) {
+      this.onClose.emit();
+    }
   }
   /**
    * Funciton to select an item from the dropdown.
@@ -147,7 +150,9 @@ export class Ng2SsComponent implements OnInit, ControlValueAccessor {
     } else {
       this.ssDisplayValue = item;
     }
-    this.onChange.emit(item);
+    if(this.onChange.observers.length > 0) {
+      this.onChange.emit(item);
+    }
     this.propagateChange(item);
     this.closeSerSel();
   }
@@ -189,7 +194,6 @@ export class Ng2SsComponent implements OnInit, ControlValueAccessor {
    * if the click was outside the component
    */
   onOutClick = (event) => {
-    console.log(event.path);
     if(event.keyCode === 27) {
       this.closeSerSel();
     } else {
