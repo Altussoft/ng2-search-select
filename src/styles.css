@@ -1,12 +1,15 @@
 .ng2-ss {
     display: inline-block;
+    position: relative;
+    font-family: 'Calibri';
 }
 .ng2-ss__main-input {
     padding: 10px 5px;
     border-radius: 4px;
-    width: 350px;
+    /* width: 350px; */
     border: 1px solid lightgray;
     box-sizing: border-box;
+    cursor: pointer;
 }
 .ng2-ss__main-input:focus {
     outline: none;
@@ -15,21 +18,78 @@
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
+.ng2-ss__main-input__arrow {
+    display: inline-block;
+    position: absolute;
+    top: 16px;
+    right: 8px;
+    font-size: 12px;
+    color: gray;
+}
 .ng2-ss__options {
+    width: 100%;
+    font-family: 'Calibri';
     border-left: 1px solid lightgrey;
     border-bottom: 1px solid lightgrey;
     border-right: 1px solid lightgrey;
     box-sizing: border-box;
     position: absolute;
-    width: 350px;
+    /* width: 350px; */
+    -webkit-box-shadow: 0 3px 12px rgba(27,31,35,0.15);
+    -moz-box-shadow: 0 3px 12px rgba(27,31,35,0.15);
+    box-shadow: 0 3px 12px rgba(27,31,35,0.15);
+}
+.ng2-ss__options__header {
+    /* margin: 5px; */
+    border-bottom: 1px solid lightgray;
+    padding: 8px 5px;
+    background: #F6F8FA;
+    font-weight: bold;
+    color: gray;
+}
+.ng2-ss__options__header span {
+    color: lightgray;
+    float: right;
+}
+.ng2-ss__options__header span:hover {
+    color: gray;
+    cursor: pointer;
+}
+.ng2-ss__options__search__tabs__holder {
+    /* padding-top: 8px; */
+    position: relative;
+    top: 1px;
+}
+.ng2-ss__options__search__tabs {
+    display: inline-block;
+    font-weight: bold;
+    padding: 5px;
+    color: lightgray;
+}
+.ng2-ss__options__search__tabs:hover {
+    cursor: pointer;
+    color: black;
+}
+.ng2-ss__options__search__tabs__active {
+    color: gray;
+    background: white;
+    border-top: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid white;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
 }
 .ng2-ss__options__search {
-    padding: 4px;
+    background: #F6F8FA;
+    padding: 8px 4px 0px 4px;
+    border-bottom: 1px solid lightgrey;
 }
 .ng2-ss__options__search__input {
     width: 100%;
     box-sizing: border-box;
     padding: 5px 4px;
+    margin-bottom: 8px;
 }
 .ng2-ss__options__holder {
     overflow-y: auto;
@@ -40,15 +100,25 @@
     cursor: pointer;
     padding: 5px 0px 5px 5px;
     background: lightgray;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .ng2-ss__options__holder__def-item:hover {
-    background: cyan;
+    background: #0366D6;
+    color: white;
 }
 
 .ng2-ss__options__holder__item {
     cursor: pointer;
-    padding: 5px 0px 5px 5px;
+    padding: 8px 5px;
+    color: darkslategray;
+    border-bottom: 1px solid gainsboro;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .ng2-ss__options__holder__item:hover {
-    background: cyan;
+    background: #0366D6;
+    color: white;
 }

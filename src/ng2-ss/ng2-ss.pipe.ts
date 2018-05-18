@@ -15,7 +15,7 @@ export class Ng2SsPipe implements PipeTransform {
         newArr.push(items[i]);
       }
     }
-    return newArr;
+    return newArr.length > 0 ? newArr : [-1];
   }
 
 }
