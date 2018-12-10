@@ -55,7 +55,7 @@
   * `onChange` - a handler to notify when a new slection is made and return the newly seleted item.
   
   ## Demo
-    ![Demo GIF](demo.GIF)
+    ![Demo GIF](http://akbeeram.github.io/images/demo.gif)
     
   ## License
 
