@@ -55,7 +55,7 @@
   * `onChange` - a handler to notify when a new slection is made and return the newly seleted item.
   
   ## Demo
-    [Demo GIF](./demo.GIF)
+    [Demo GIF](http://storiesforkids.in/images/story-tiles/tenali-raman.png)
   ## License
 
   [MIT](./LICENSE)
